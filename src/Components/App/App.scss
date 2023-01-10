@@ -1,0 +1,20 @@
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-9');
+@import "../../baseStyles/variables";
+@import "../../baseStyles/reset";
+@import "../../baseStyles/smart-grid";
+
+.wrapper {
+  @include wrapper();
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #000;
+}
