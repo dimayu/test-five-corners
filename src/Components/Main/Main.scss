@@ -1,0 +1,11 @@
+@import "src/baseStyles/variables";
+@import "src/baseStyles/smart-grid";
+
+.main {
+  flex: 1 0 auto;
+}
+
+.page-title {
+  font-size: 40px;
+  line-height: 42px;
+}

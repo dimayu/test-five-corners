@@ -1,0 +1,50 @@
+@import "src/baseStyles/variables";
+@import "src/baseStyles/smart-grid";
+
+.form {
+  @include row-flex();
+
+  &__right {
+    @include col();
+    @include size(8);
+  }
+
+  &__left {
+    @include col();
+    @include size(4);
+  }
+
+  &__title {
+    display: flex;
+    margin-bottom: 60px;
+  }
+
+  &__login {
+    align-self: flex-end;
+    margin-left: 24px;
+    margin-bottom: 4px;
+    font-size: 14px;
+
+    &--account {
+      color: $color-grey-1;
+      padding-right: 8px;
+
+      &:hover {
+        color: $color-black;
+      }
+    }
+
+    &--sign {
+      color: $color-black;
+
+      &:hover {
+        color: $color-grey-1;
+      }
+    }
+  }
+
+  &__results {
+    height: 400px;
+    border: 1px solid $color-grey-1;
+  }
+}

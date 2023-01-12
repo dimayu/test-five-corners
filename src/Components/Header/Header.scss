@@ -1,0 +1,61 @@
+@import "src/baseStyles/variables";
+
+.header {
+  flex: 0 0 auto;
+  border: 0.5px solid $color-grey-2;
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0 20px;
+
+    &__logo {
+      svg {
+        fill: $color-black;
+      }
+
+      &:hover {
+        svg {
+          fill: $color-grey-1;
+        }
+      }
+    }
+
+    &__right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__item {
+        position: relative;
+        margin-left: 25px;
+
+        svg {
+          cursor: pointer;
+          stroke: $color-black;
+
+          &:hover {
+            stroke: $color-grey-1;
+          }
+        }
+
+        &--indicator {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 15px;
+          height: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background-color: $color-black;
+          font-size: 10px;
+          line-height: 8px;
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+}

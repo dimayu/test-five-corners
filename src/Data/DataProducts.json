@@ -1,0 +1,100 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "amount": 8,
+      "title": "Утепленная стеганная куртка женская Top Hills",
+      "img": "../img/product-1.png",
+      "vendor_code": "512-05",
+      "price": 10000,
+      "price_old": 12000,
+      "season": "Осень-зима",
+      "sizes": [
+        {
+          "size_id": 1,
+          "size_title": "XS",
+          "size_presence": true
+        },
+        {
+          "size_id": 2,
+          "size_title": "S",
+          "size_presence": true
+        },
+        {
+          "size_id": 3,
+          "size_title": "M",
+          "size_presence": true
+        },
+        {
+          "size_id": 4,
+          "size_title": "L",
+          "size_presence": true
+        },
+        {
+          "size_id": 5,
+          "size_title": "XL",
+          "size_presence": true
+        }
+      ],
+      "colors": [
+        {
+          "color_id": 1,
+          "color": "#444444"
+        },
+        {
+          "color_id": 2,
+          "color": "#106DA2"
+        },
+        {
+          "color_id": 3,
+          "color": "#AE6D0C"
+        }
+      ],
+      "quantity_ordered": 1
+    },
+    {
+      "id": 2,
+      "amount": 10,
+      "title": "Вязанная шапка Zolla",
+      "img": "../img/product-2.png",
+      "vendor_code": "891-256",
+      "price": 500,
+      "price_old": null,
+      "season": "Демисезон",
+      "sizes": [
+        {
+          "size_id": 1,
+          "size_title": "XS",
+          "size_presence": true
+        },
+        {
+          "size_id": 2,
+          "size_title": "S",
+          "size_presence": true
+        },
+        {
+          "size_id": 3,
+          "size_title": "M",
+          "size_presence": true
+        },
+        {
+          "size_id": 4,
+          "size_title": "L",
+          "size_presence": false
+        },
+        {
+          "size_id": 5,
+          "size_title": "XL",
+          "size_presence": false
+        }
+      ],
+      "colors": [
+        {
+          "color_id": 1,
+          "color": "#444444"
+        }
+      ],
+      "quantity_ordered": 1
+    }
+  ]
+}

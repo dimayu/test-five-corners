@@ -1,0 +1,32 @@
+@import "src/baseStyles/variables";
+
+.breadcrumbs {
+  display: flex;
+  margin-top: 48px;
+  margin-bottom: 42px;
+
+  &__item {
+    &--link {
+      position: relative;
+      margin-right: 10px;
+      font-size: 12px;
+      line-height: 15px;
+      color: $color-grey-1;
+
+      &::after {
+        content: "/";
+        padding-left: 10px;
+      }
+
+      &:hover {
+        color: $color-black;
+      }
+    }
+
+    &--span {
+      font-size: 12px;
+      line-height: 15px;
+      color: $color-black;
+    }
+  }
+}
