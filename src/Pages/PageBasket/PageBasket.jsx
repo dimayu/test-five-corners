@@ -6,18 +6,15 @@ import data from '../../Data/DataProducts';
 import './PageBasket.scss';
 
 export const PageBasket = () => {
+  useEffect(() => {}, [data])
+  
   const [, setId] = useState();
   const handleClickId = (id) => {
     setId(id);
-    console.log(id);
   }
   
   const sumPrice = data.products.reduce((acc, product) => (acc + product.price * product.quantity_ordered), 0);
   const sumProducts= data.products.reduce((acc, product) => (acc + product.quantity_ordered), 0);
-  
-  useEffect(() => {
-  
-  }, [data]);
 
   return (
     <div className="wrapper">

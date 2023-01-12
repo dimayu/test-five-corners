@@ -195,3 +195,20 @@
     }
   }
 }
+
+.block-return {
+  margin-right: 38px;
+  margin-bottom: 25px;
+  padding: 18px 25px;
+  background-color: $color-grey-3;
+  color: $color-grey-1;
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__btn {
+    margin-left: 10px;
+    color: $color-black;
+  }
+}
