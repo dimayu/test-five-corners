@@ -1,0 +1,9 @@
+{
+  "user": {
+    "id": 1,
+    "sale": 4500,
+    "promotion": 4000,
+    "promo_code": 500,
+    "delivery": 200
+  }
+}

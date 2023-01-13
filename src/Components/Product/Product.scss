@@ -28,6 +28,7 @@
 
     &--title {
       margin-bottom: 15px;
+      margin-right: 25px;
       font-size: 20px;
       line-height: 24px;
     }
@@ -178,7 +179,7 @@
         }
 
         &--new {
-          font-size: 24px;
+          font-size: 20px;
           white-space: nowrap;
         }
       }
@@ -186,6 +187,7 @@
 
     &--delete {
       margin-left: 10px;
+      cursor: pointer;
 
       &:hover {
         svg {
@@ -197,11 +199,17 @@
 }
 
 .block-return {
+  display: flex;
+  align-items: center;
   margin-right: 38px;
   margin-bottom: 25px;
   padding: 18px 25px;
   background-color: $color-grey-3;
   color: $color-grey-1;
+
+  &--hide {
+    display: none;
+  }
 
   &__title {
     font-weight: 600;
@@ -209,6 +217,21 @@
 
   &__btn {
     margin-left: 10px;
+    margin-right: 20px;
     color: $color-black;
+
+    &--delete {
+      margin-left: auto;
+
+      svg {
+        stroke: $color-black;
+      }
+
+      &:hover {
+        svg {
+          stroke: $color-grey-1;
+        }
+      }
+    }
   }
 }

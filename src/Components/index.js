@@ -6,3 +6,6 @@ export * from './Footer';
 export * from './SvgSprite';
 export * from './BreadCrumbs';
 export * from './Product';
+export * from './Form';
+export * from './Result';
+export * from './FormMap';

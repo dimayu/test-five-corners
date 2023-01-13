@@ -1,0 +1,145 @@
+@import "src/baseStyles/variables";
+
+.form__contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: 38px;
+
+  &__container {
+    position: relative;
+    width: 49%;
+    height: 51px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    box-sizing: border-box;
+
+    &--address {
+      width: 100%;
+    }
+
+    &--comment {
+      width: calc(100% - 38px);
+      height: 141px;
+      box-sizing: border-box;
+
+      .form__contacts__container--input {
+        height: 141px;
+      }
+
+      &--symbol {
+        margin-left: 20px;
+        margin-top: 5px;
+        font-size: 12px;
+        color: $color-grey-1;
+      }
+    }
+
+    &--placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 200ms;
+      color: $color-grey-1;
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+    }
+
+    &--input {
+      height: 51px;
+      width: 100%;
+      border: 1px solid $color-grey-2;
+      padding-left: 15px;
+      box-sizing: border-box;
+
+      &:placeholder-shown + label {
+        top: 15px;
+        left: 20px;
+        padding: 0 4px;
+      }
+
+      &:focus {
+        border-color: $color-grey-1;
+        outline: none;
+
+        + label {
+          top: -5px;
+          background-color: #fff;
+          padding: 0 4px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    &-address {
+      width: 100%;
+    }
+  }
+
+  &__radio {
+    width: 100%;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+
+      + label {
+        cursor: pointer;
+
+        &:before {
+          content: '';
+          border-radius: 100%;
+          border: 3px solid #fff;
+          outline: 1px solid $color-grey-1;
+          display: inline-block;
+          width: 22px;
+          height: 22px;
+          position: relative;
+          top: -0.2em;
+          margin-right: 10px;
+          vertical-align: top;
+          cursor: pointer;
+          text-align: center;
+          box-sizing: border-box;
+        }
+      }
+
+      &:checked {
+        + label {
+          &:before {
+            background-color: $color-black;
+          }
+        }
+      }
+
+      &:focus {
+        + label {
+          &:before {
+            border: 2px solid #fff;
+            outline: 1px solid $color-grey-1;
+          }
+        }
+      }
+
+      &:disabled {
+        + label {
+          &:before {
+            border-color: $color-grey-1;
+          }
+        }
+      }
+
+      + label {
+        &:empty {
+          &:before {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

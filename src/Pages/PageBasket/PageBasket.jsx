@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { BreadCrumbs, Product } from '../../Components';
+import { BreadCrumbs, Form, Product, Result, FormMap } from '../../Components';
 import data from '../../Data/DataProducts';
+import user from '../../Data/FormData.json';
 
 import './PageBasket.scss';
 
@@ -29,7 +30,7 @@ export const PageBasket = () => {
             </div>
           </div>
           <div className="form__products">
-            <h2 className="form__products--title">{sumProducts} товара на сумму {sumPrice} ₽</h2>
+            <h2 className="form__products--title">{sumProducts} товара на сумму {sumPrice.toLocaleString()} ₽</h2>
             {Boolean(data.products.length) ? data.products.map(product => (
               <Product key={product.id} id={product.id} {...product}
                        product={product}
@@ -38,9 +39,14 @@ export const PageBasket = () => {
           </div>
         </div>
         <div className="form__left">
-          <div className="form__results">
-          
-          </div>
+          <Result sumPrice={sumPrice}
+                  user={user.user}/>
+        </div>
+        <div className="form__right">
+          <Form/>
+        </div>
+        <div className="form__left">
+          <FormMap/>
         </div>
       </form>
     </div>

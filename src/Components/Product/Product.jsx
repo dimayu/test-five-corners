@@ -5,6 +5,8 @@ import './Product.scss';
 
 export const Product = ({product, handleClickId}) => {
   const [count, setCount] = useState(1);
+  const [deleteCheck, setDeleteCheck] = useState(false);
+  const [hide, setHide] = useState(false);
   
   const {
     id,
@@ -43,15 +45,20 @@ export const Product = ({product, handleClickId}) => {
   
   const deleteProduct = (event) => {
     event.preventDefault();
+    setDeleteCheck(!deleteCheck);
     product.deleted = true;
-    handleClickId(id);
-  }
+  };
   
   const reestablishProduct = (event) => {
     event.preventDefault();
     product.deleted = false;
-    handleClickId(id);
-  }
+    setDeleteCheck(!deleteCheck);
+  };
+  
+  const hideBlock = (event) => {
+    event.preventDefault();
+    setHide(!hide);
+  };
   
   return (
     <>
@@ -93,10 +100,10 @@ export const Product = ({product, handleClickId}) => {
             <div className="form__products__item__calc">
               <div className="form__products__item__calc--price">
                 <div className="form__products__item__calc--price--old">
-                  {(price_old !== null) ? price_old + " ₽" : ""}
+                  {(price_old !== null) ? price_old.toLocaleString() + " ₽" : ""}
                 </div>
                 <div className="form__products__item__calc--price--new">
-                  {price} ₽
+                  {price.toLocaleString()} ₽
                 </div>
               </div>
               <div className="form__products__item__calc--count">
@@ -112,10 +119,10 @@ export const Product = ({product, handleClickId}) => {
               </div>
               <div className="form__products__item__calc--sum">
                 <div className="form__products__item__calc--price--old">
-                  {(price_old !== null) ? price_old * count + " ₽" : ""}
+                  {(price_old !== null) ? (price_old * count).toLocaleString() + " ₽" : ""}
                 </div>
                 <div className="form__products__item__calc--price--new">
-                  {price * count} ₽
+                  {(price * count).toLocaleString()} ₽
                 </div>
               </div>
             </div>
@@ -123,12 +130,16 @@ export const Product = ({product, handleClickId}) => {
               <SvgSprite id={"close"}/>
             </button>
           </div>
-          : <div className="block-return">Товар
-            <span className="block-return__title"> {title} </span>
-            был удален из корзины.
+          : <div className={hide ? "block-return block-return--hide" : "block-return"}>
+            <p>Товар
+              <span className="block-return__title"> {title} </span>
+              был удален из корзины.</p>
             <button onClick={reestablishProduct} className="block-return__btn"> Восстановить</button>
+            <button onClick={hideBlock} className="block-return__btn--delete">
+              <SvgSprite id={"close"}/>
+            </button>
           </div>
       }
     </>
   );
-}
+};
