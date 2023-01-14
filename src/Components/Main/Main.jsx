@@ -10,7 +10,8 @@ import {
 
 import './Main.scss';
 
-export const Main = () => {
+export const Main = ({setSumProducts}) => {
+  
   return (
     <main className="main">
       <Routes>
@@ -18,7 +19,8 @@ export const Main = () => {
         <Route path="catalog" element={<PageCatalog/>}/>
         <Route path="about" element={<PageAbout/>}/>
         <Route path="shops" element={<PageShops/>}/>
-        <Route path="basket" element={<PageBasket/>}/>
+        <Route path="basket"
+               element={<PageBasket setSumProducts={setSumProducts}/>}/>
         <Route path="user" element={<PageUser/>}/>
         <Route path="favorites" element={<PageFavorites/>}/>
       </Routes>

@@ -3,7 +3,7 @@ import { Navigation, SvgSprite } from '../../Components/index';
 
 import './Header.scss';
 
-export const Header = () => {
+export const Header = ({sumProducts}) => {
   return (
     <header className="header">
       <div className="wrapper">
@@ -27,7 +27,7 @@ export const Header = () => {
             <Link to="basket" className="header__items__right__item">
               <SvgSprite id={"basket"}/>
               <div className="header__items__right__item--indicator">
-                1
+                {sumProducts}
               </div>
             </Link>
           </div>

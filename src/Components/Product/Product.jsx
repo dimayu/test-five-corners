@@ -46,12 +46,14 @@ export const Product = ({product, handleClickId}) => {
   const deleteProduct = (event) => {
     event.preventDefault();
     setDeleteCheck(!deleteCheck);
+    handleClickId(id);
     product.deleted = true;
   };
   
   const reestablishProduct = (event) => {
     event.preventDefault();
     product.deleted = false;
+    handleClickId(id);
     setDeleteCheck(!deleteCheck);
   };
   

@@ -1,6 +1,8 @@
+import { useState } from 'react';
+
 import './Result.scss';
 
-export const Result = ({sumPrice, user}) => {
+export const Result = ({sumPrice, user, addFormDataResultHandler}) => {
   const {
     sale,
     promotion,
@@ -8,7 +10,10 @@ export const Result = ({sumPrice, user}) => {
     delivery
   } = user;
   
-  const sum = (sumPrice - sale - promotion -promo_code + delivery).toLocaleString();
+  const sum = (sumPrice - sale - promotion - promo_code + delivery).toLocaleString();
+  
+  const [stock, setStock] = useState(false);
+  addFormDataResultHandler(sumPrice, sale, promotion, promo_code, delivery, stock, sum);
   
   return (
     <div className="form__results">
@@ -37,7 +42,11 @@ export const Result = ({sumPrice, user}) => {
           <span>Получить товар со склада</span>
           <p>Сроки получения могут измениться</p>
         </div>
-        <input type="checkbox" className="switch"/>
+        <input type="checkbox"
+               className="switch"
+               checked={stock}
+               onChange={() => setStock(!stock)}
+        />
       </div>
       <div className="form__results__item form__results__item--result">
         <span>Итого:</span>

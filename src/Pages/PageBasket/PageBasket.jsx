@@ -6,21 +6,64 @@ import user from '../../Data/FormData.json';
 
 import './PageBasket.scss';
 
-export const PageBasket = () => {
-  useEffect(() => {}, [data])
+export const PageBasket = ({setSumProducts}) => {
+  const sumPrice = data.products.filter(e => !e.deleted).reduce((acc, product) => (acc + product.price * product.quantity_ordered), 0);
+  const sumProduct = data.products.filter(e => !e.deleted).reduce((acc, product) => (acc + product.quantity_ordered), 0);
   
-  const [, setId] = useState();
+  const [id, setId] = useState();
+  
+  const [formData, setFormData] = useState([]);
+  
+  useEffect(() => {
+    setId(id)
+  }, [id])
+  
   const handleClickId = (id) => {
     setId(id);
   }
   
-  const sumPrice = data.products.reduce((acc, product) => (acc + product.price * product.quantity_ordered), 0);
-  const sumProducts= data.products.reduce((acc, product) => (acc + product.quantity_ordered), 0);
+  useEffect(() => {
+    setSumProducts(sumProduct);
+  }, [sumProduct, id, sumPrice, sumProduct]);
+  
+  const addFormDataHandler = (name, secondName, phone, email, address, pay, comment) => {
+    const formData = {
+        name: name,
+        secondName: secondName,
+        phone: phone,
+        email: email,
+        address: address,
+        pay: pay,
+        comment: comment,
+      }
+    setFormData([formData]);
+  };
+  
+  let formResult;
+  
+  const addFormDataResultHandler = (sum, sale, promotion, promo_code, delivery, stock, result) => {
+    formResult = {
+      sum: sum,
+      sale: sale,
+      promotion: promotion,
+      promo_code: promo_code,
+      delivery: delivery,
+      stock: stock,
+      result: result,
+    }
+  };
+  
+  const onSubmit = (e) => {
+    e.preventDefault();
+    formData.push(formResult);
+    formData.unshift(data.products);
+    console.log(formData);
+  };
 
   return (
     <div className="wrapper">
       <BreadCrumbs/>
-      <form className="form">
+      <form className="form" onSubmit={onSubmit}>
         <div className="form__right">
           <div className="form__title">
             <h1 className="page-title">Оформление заказа</h1>
@@ -30,20 +73,23 @@ export const PageBasket = () => {
             </div>
           </div>
           <div className="form__products">
-            <h2 className="form__products--title">{sumProducts} товара на сумму {sumPrice.toLocaleString()} ₽</h2>
+            <h2 className="form__products--title">{sumProduct} товара на сумму {sumPrice.toLocaleString()} ₽</h2>
             {Boolean(data.products.length) ? data.products.map(product => (
               <Product key={product.id} id={product.id} {...product}
                        product={product}
-                       handleClickId={handleClickId}/>
+                       handleClickId={handleClickId}
+              />
             )) : <h4 className="not-found">Nothing found</h4>}
           </div>
         </div>
         <div className="form__left">
           <Result sumPrice={sumPrice}
-                  user={user.user}/>
+                  user={user.user}
+                  addFormDataResultHandler={addFormDataResultHandler}
+          />
         </div>
         <div className="form__right">
-          <Form/>
+          <Form addFormDataHandler={addFormDataHandler}/>
         </div>
         <div className="form__left">
           <FormMap/>
