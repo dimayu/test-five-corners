@@ -53,11 +53,19 @@ export const PageBasket = ({setSumProducts}) => {
     }
   };
   
+  let formProducts = [];
+  
+  const addFormProductsResultHandler = (formProduct) => {
+    formProducts.push(formProduct);
+  };
+  
   const onSubmit = (e) => {
     e.preventDefault();
     formData.push(formResult);
-    formData.unshift(data.products);
-    console.log(formData);
+    formData.unshift(formProducts
+      .filter(e => !e.deleted)
+      .filter((el => f => !el.has(f.id) && el.add(f.id))(new Set())));
+    console.log(formData.filter((e,index) => JSON.stringify(e) !== JSON.stringify(e[index++])));
   };
 
   return (
@@ -78,6 +86,7 @@ export const PageBasket = ({setSumProducts}) => {
               <Product key={product.id} id={product.id} {...product}
                        product={product}
                        handleClickId={handleClickId}
+                       addFormProductsResultHandler={addFormProductsResultHandler}
               />
             )) : <h4 className="not-found">Nothing found</h4>}
           </div>

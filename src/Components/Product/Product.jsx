@@ -3,8 +3,10 @@ import { SvgSprite } from '../SvgSprite';
 
 import './Product.scss';
 
-export const Product = ({product, handleClickId}) => {
+export const Product = ({product, handleClickId, addFormProductsResultHandler}) => {
   const [count, setCount] = useState(1);
+  const [colorItem, setColorItem] = useState('#444444');
+  const [sizeItem, setSizeItem] = useState('XS');
   const [deleteCheck, setDeleteCheck] = useState(false);
   const [hide, setHide] = useState(false);
   
@@ -19,7 +21,30 @@ export const Product = ({product, handleClickId}) => {
     season,
     sizes,
     colors,
+    deleted
   } = product;
+  
+  addFormProductsResultHandler(
+    {
+      deleted: deleted,
+      id: id,
+      title: title,
+      vendor_code: vendor_code,
+      price: price,
+      amount: count,
+      season: season,
+      size: sizeItem,
+      color: colorItem
+    }
+  );
+  
+  const changeValueSize = (e) => {
+    setSizeItem(e.target.value);
+  }
+  
+  const changeValueColor = (e) => {
+    setColorItem(e.target.value);
+  }
   
   const incrementCount = (event) => {
     event.preventDefault();
@@ -85,6 +110,9 @@ export const Product = ({product, handleClickId}) => {
                            id={`size-${id}-${size.size_title}`}
                            name={`size-${id}`}
                            disabled={size.size_presence !== true}
+                           value={size.size_title}
+                           checked={sizeItem === `${size.size_title}`}
+                           onChange={changeValueSize}
                     />
                     <label htmlFor={`size-${id}-${size.size_title}`}>{size.size_title}</label>
                   </div>
@@ -93,8 +121,15 @@ export const Product = ({product, handleClickId}) => {
               <div className="form__products__item--colors">
                 {colors.map(color => (
                   <div key={color.color_id} className="form__products__item--colors--item">
-                    <input type="radio" id={color.color} name={`color-${id}`}/>
-                    <label htmlFor={color.color} style={{backgroundColor: `${color.color}`}}></label>
+                    <input type="radio"
+                           id={color.color}
+                           name={`color-${id}`}
+                           value={color.color}
+                           checked={colorItem === `${color.color}`}
+                           onChange={changeValueColor}
+                    />
+                    <label htmlFor={color.color}
+                           style={{backgroundColor: `${color.color}`}}></label>
                   </div>
                 ))}
               </div>
