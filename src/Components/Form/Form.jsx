@@ -137,7 +137,7 @@ export const Form = ({addFormDataHandler, isValidForm}) => {
           </label>
           {(nameError && nameDirty) && <div className="error">{nameError}</div>}
         </div>
-        <div className={(setNameError && secondNameDirty) && "form__contacts__container form__contacts__container--error"
+        <div className={(secondNameError && secondNameDirty) && "form__contacts__container form__contacts__container--error"
           || "form__contacts__container"
         }>
           <input className="form__contacts__container--input"
