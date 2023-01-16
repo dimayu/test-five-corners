@@ -13,6 +13,7 @@ export const PageBasket = ({setSumProducts}) => {
   const [id, setId] = useState();
   
   const [formData, setFormData] = useState([]);
+  const [formValid, setFormValid] = useState(true);
   
   useEffect(() => {
     setId(id)
@@ -59,8 +60,13 @@ export const PageBasket = ({setSumProducts}) => {
     formProducts.push(formProduct);
   };
   
+  const isValidForm = (valid) => {
+    setFormValid(valid);
+  };
+  
   const onSubmit = (e) => {
     e.preventDefault();
+    
     formData.push(formResult);
     formData.unshift(formProducts
       .filter(e => !e.deleted)
@@ -95,10 +101,13 @@ export const PageBasket = ({setSumProducts}) => {
           <Result sumPrice={sumPrice}
                   user={user.user}
                   addFormDataResultHandler={addFormDataResultHandler}
+                  formValid={formValid}
           />
         </div>
         <div className="form__right">
-          <Form addFormDataHandler={addFormDataHandler}/>
+          <Form addFormDataHandler={addFormDataHandler}
+                isValidForm={isValidForm}
+          />
         </div>
         <div className="form__left">
           <FormMap/>

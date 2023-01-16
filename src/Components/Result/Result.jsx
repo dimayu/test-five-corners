@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './Result.scss';
 
-export const Result = ({sumPrice, user, addFormDataResultHandler}) => {
+export const Result = ({sumPrice, user, addFormDataResultHandler, formValid}) => {
   const {
     sale,
     promotion,
@@ -55,7 +55,7 @@ export const Result = ({sumPrice, user, addFormDataResultHandler}) => {
       <div className="form__results__item form__results__item--input">
         <input type="text" placeholder="Введите промокод"/>
       </div>
-      <button className="btn">Оформить заказ</button>
+      <button className="btn" disabled={formValid}>Оформить заказ</button>
       <div className="form__results__item form__results__item--conf">
         <p>Нажимая кнопку “Оформить заказ”, Вы соглашаетесь с <a href="#">политикой конфиденциальности</a>.</p>
       </div>
